@@ -66,7 +66,7 @@ namespace RTS.Core
         }
 
         [SerializeField]
-        private Mode outlineMode;
+        private Mode outlineMode = Outline.Mode.None;
 
         [SerializeField]
         private Color outlineColor = Color.white;
