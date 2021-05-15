@@ -1,6 +1,6 @@
 {
     "name": "Abstractions",
-    "rootNamespace": "RTS",
+    "rootNamespace": "RTS.Abstractions",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
