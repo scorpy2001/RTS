@@ -2,12 +2,12 @@ using System.Linq;
 using RTS.Abstractions;
 using UnityEngine;
 
-namespace RTS.UserControlSystem
+namespace RTS.UserControlSystem.UiPresenter
 {
-    public class MouseInteractionsHandler : MonoBehaviour
+    public class MouseInteractionsPresenter : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
-        [SerializeField] private SelectableValue _selectedObject;
+        [SerializeField] private SelectableValueModel _selectedObject;
 
         private void Update()
         {

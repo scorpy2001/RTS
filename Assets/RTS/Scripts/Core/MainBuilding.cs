@@ -9,6 +9,7 @@ namespace RTS.Core
         [SerializeField] private Transform _unitsParent;
         [SerializeField] private float _maxHealth = 1000f;
         [SerializeField] private Sprite _icon;
+        [SerializeField] private Outline _outline;
         private float _health;
 
         public float Health => _health;
@@ -25,6 +26,16 @@ namespace RTS.Core
         public void ProduceUnit()
         {
             Instantiate(_unitPrefab, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
+        }
+
+        public void Select()
+        {
+            _outline.OutlineMode = Outline.Mode.OutlineAll;
+        }
+
+        public void Deselect()
+        {
+            _outline.OutlineMode = Outline.Mode.None;
         }
     }
 }

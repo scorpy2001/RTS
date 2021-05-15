@@ -1,0 +1,16 @@
+{
+    "name": "UIModel",
+    "rootNamespace": "RTS.UserControlSystem.UiModel",
+    "references": [
+        "GUID:35f52c97245c6f54c917dee1fa787801"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

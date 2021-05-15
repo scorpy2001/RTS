@@ -5,14 +5,15 @@ using TMPro;
 
 namespace RTS.UserControlSystem
 {
-    public class BottomLeftUI : MonoBehaviour
+    public class BottomLefPresenter : MonoBehaviour
     {
         [SerializeField] private Image _selectedImage;
         [SerializeField] private Slider _healthSlider;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private Image _sliderBackground;
         [SerializeField] private Image _sliderFillImage;
-        [SerializeField] private SelectableValue _selectedValue;
+        [SerializeField] private SelectableValueModel _selectedValue;
+        
         private void Start()
         {
             _selectedValue.OnSelected += SelectedValue_OnSelected;
