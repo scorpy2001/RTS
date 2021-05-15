@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using RTS.Scripts.Core;
+using RTS.Scripts.Abstractions;
 using UnityEngine;
 
 namespace RTS.Scripts.UserControlSystem
@@ -22,7 +20,7 @@ namespace RTS.Scripts.UserControlSystem
             {
                 return;
             }
-            var mainBuilding = hits.Select(hit => hit.collider.GetComponentInParent<MainBuilding>()).FirstOrDefault(c => c != null);
+            var mainBuilding = hits.Select(hit => hit.collider.GetComponentInParent<IUnitProducer>()).FirstOrDefault(c => c != null);
             if (mainBuilding == default)
             {
                 return;

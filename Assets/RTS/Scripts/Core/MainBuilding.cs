@@ -1,8 +1,9 @@
+using RTS.Scripts.Abstractions;
 using UnityEngine;
 
 namespace RTS.Scripts.Core
 {
-    public class MainBuilding : MonoBehaviour
+    public class MainBuilding : MonoBehaviour, IUnitProducer
     {
         [SerializeField] private GameObject _unitPrefab;
         [SerializeField] private Transform _unitsParent;
