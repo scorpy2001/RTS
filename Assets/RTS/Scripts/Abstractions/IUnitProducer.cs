@@ -1,4 +1,4 @@
-namespace RTS.Scripts.Abstractions
+namespace RTS.Abstractions
 {
     public interface IUnitProducer
     {

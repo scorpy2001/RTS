@@ -1,12 +1,26 @@
-using RTS.Scripts.Abstractions;
+using RTS.Abstractions;
 using UnityEngine;
 
-namespace RTS.Scripts.Core
+namespace RTS.Core
 {
-    public class MainBuilding : MonoBehaviour, IUnitProducer
+    public class MainBuilding : MonoBehaviour, IUnitProducer, ISelectable
     {
         [SerializeField] private GameObject _unitPrefab;
         [SerializeField] private Transform _unitsParent;
+        [SerializeField] private float _maxHealth = 1000f;
+        [SerializeField] private Sprite _icon;
+        private float _health;
+
+        public float Health => _health;
+
+        public float MaxHealth => _maxHealth;
+
+        public Sprite Icon => _icon;
+
+        private void Awake()
+        {
+            _health = _maxHealth;
+        }
 
         public void ProduceUnit()
         {

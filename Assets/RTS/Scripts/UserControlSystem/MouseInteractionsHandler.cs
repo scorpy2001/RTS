@@ -1,12 +1,13 @@
 using System.Linq;
-using RTS.Scripts.Abstractions;
+using RTS.Abstractions;
 using UnityEngine;
 
-namespace RTS.Scripts.UserControlSystem
+namespace RTS.UserControlSystem
 {
     public class MouseInteractionsHandler : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
+        [SerializeField] private SelectableValue _selectedObject;
 
         private void Update()
         {
@@ -20,12 +21,8 @@ namespace RTS.Scripts.UserControlSystem
             {
                 return;
             }
-            var mainBuilding = hits.Select(hit => hit.collider.GetComponentInParent<IUnitProducer>()).FirstOrDefault(c => c != null);
-            if (mainBuilding == default)
-            {
-                return;
-            }
-            mainBuilding.ProduceUnit();
+            var selectable = hits.Select(hit => hit.collider.GetComponentInParent<ISelectable>()).FirstOrDefault(c => c != null);
+            _selectedObject.SetValue(selectable);
         }
     }
 }
