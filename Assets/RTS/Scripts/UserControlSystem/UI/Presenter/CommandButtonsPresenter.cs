@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using RTS.Abstractions;
 using RTS.UserControlSystem.Model;
 using RTS.UserControlSystem.UiView;
+using RTS.Utils;
 using UnityEngine;
 
 namespace RTS.UserControlSystem.UiPresenter
@@ -11,6 +12,8 @@ namespace RTS.UserControlSystem.UiPresenter
     {
         [SerializeField] private SelectableValueModel _selectable;
         [SerializeField] private CommandButtonsView _view;
+        [SerializeField] private AssetsContext _context;
+        
         private ISelectable _currentSelectable;
 
         private void Start()
@@ -43,7 +46,7 @@ namespace RTS.UserControlSystem.UiPresenter
             switch (commandExecutor)
             {
                 case CommandExecutorBase<IProduceUnitCommand> unitProducer:
-                    unitProducer.ExecuteCommand(new ProduceUnitCommand());
+                    unitProducer.ExecuteCommand(_context.Inject(new ProduceUnitCommand()));
                     break;
                 default:
                     throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(onButtonClick)}: Unknown type of commands executor: {commandExecutor.GetType().FullName}!");

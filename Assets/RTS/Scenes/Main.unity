@@ -7216,6 +7216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectable: {fileID: 11400000, guid: de8fe5d3673bcea48b83d5ae30f150d1, type: 2}
   _view: {fileID: 924596829}
+  _context: {fileID: 11400000, guid: 14cf6960d9090b84b975de9ef26e57b2, type: 2}
 --- !u!114 &924596829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17111,7 +17112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5284034285731357473, guid: e9ed7f6007eb0bf4d82ecc408bb1dd5f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.73
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5284034285731357473, guid: e9ed7f6007eb0bf4d82ecc408bb1dd5f, type: 3}
       propertyPath: m_LocalPosition.y
