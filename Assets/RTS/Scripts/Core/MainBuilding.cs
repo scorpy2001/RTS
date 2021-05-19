@@ -3,9 +3,8 @@ using UnityEngine;
 
 namespace RTS.Core
 {
-    public class MainBuilding : MonoBehaviour, IUnitProducer, ISelectable
+    public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectable
     {
-        [SerializeField] private GameObject _unitPrefab;
         [SerializeField] private Transform _unitsParent;
         [SerializeField] private float _maxHealth = 1000f;
         [SerializeField] private Sprite _icon;
@@ -23,11 +22,6 @@ namespace RTS.Core
             _health = _maxHealth;
         }
 
-        public void ProduceUnit()
-        {
-            Instantiate(_unitPrefab, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
-        }
-
         public void Select()
         {
             _outline.OutlineMode = Outline.Mode.OutlineAll;
@@ -36,6 +30,11 @@ namespace RTS.Core
         public void Deselect()
         {
             _outline.OutlineMode = Outline.Mode.None;
+        }
+
+        protected override void ExecuteSpecificCommand(IProduceUnitCommand command)
+        {
+            Instantiate(command.UnitPrefab, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
         }
     }
 }

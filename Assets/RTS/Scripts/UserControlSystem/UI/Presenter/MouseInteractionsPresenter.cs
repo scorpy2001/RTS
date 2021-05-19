@@ -1,6 +1,8 @@
 using System.Linq;
 using RTS.Abstractions;
+using RTS.UserControlSystem.Model;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RTS.UserControlSystem.UiPresenter
 {
@@ -8,9 +10,15 @@ namespace RTS.UserControlSystem.UiPresenter
     {
         [SerializeField] private Camera _camera;
         [SerializeField] private SelectableValueModel _selectedObject;
+        [SerializeField] private EventSystem _eventSystem;
 
         private void Update()
         {
+            if (_eventSystem.IsPointerOverGameObject())
+            {
+                return;
+            }
+
             if (!Input.GetMouseButtonUp(0))
             {
                 return;

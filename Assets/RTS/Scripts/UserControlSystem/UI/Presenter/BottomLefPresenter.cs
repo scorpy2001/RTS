@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using RTS.Abstractions;
 using TMPro;
+using RTS.UserControlSystem.Model;
 
 namespace RTS.UserControlSystem
 {

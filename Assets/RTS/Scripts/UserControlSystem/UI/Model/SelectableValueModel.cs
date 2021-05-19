@@ -2,7 +2,7 @@ using System;
 using RTS.Abstractions;
 using UnityEngine;
 
-namespace RTS.UserControlSystem
+namespace RTS.UserControlSystem.Model
 {
     [CreateAssetMenu(fileName = nameof(SelectableValueModel), menuName = "Strategy Game/" + nameof(SelectableValueModel), order = 0)]
     public class SelectableValueModel : ScriptableObject
