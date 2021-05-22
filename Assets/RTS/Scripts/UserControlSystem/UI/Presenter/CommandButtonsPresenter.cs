@@ -46,7 +46,7 @@ namespace RTS.UserControlSystem.UiPresenter
             switch (commandExecutor)
             {
                 case CommandExecutorBase<IProduceUnitCommand> unitProducer:
-                    unitProducer.ExecuteCommand(_context.Inject(new ProduceUnitCommand()));
+                    unitProducer.ExecuteCommand(_context.Inject(new ProduceUnitCommandHeir()));
                     break;
                 case CommandExecutorBase<IAttackCommand> attaker:
                     attaker.ExecuteCommand(new AttackCommand()); // TODO: возможо будет необходимо внедрение зависимоти.
