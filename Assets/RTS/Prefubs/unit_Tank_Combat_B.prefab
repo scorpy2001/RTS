@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6127173200736089767}
   - component: {fileID: -2408094500305437342}
   - component: {fileID: 6970313517862719745}
+  - component: {fileID: -6217448316368418620}
   m_Layer: 0
   m_Name: unit_Tank_Combat_B
   m_TagString: Untagged
@@ -117,6 +118,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e256516bc49cc7a419c04602848bfe21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6217448316368418620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103062165123301535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea704e1b95cf3645a92d055cd3fe7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8907797153763444121

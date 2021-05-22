@@ -57,6 +57,9 @@ namespace RTS.UserControlSystem.UiPresenter
                 case CommandExecutorBase<IPatrolCommand> attaker:
                     attaker.ExecuteCommand(new PatrolCommand()); // TODO: возможо будет необходимо внедрение зависимоти.
                     break;
+                case CommandExecutorBase<IStopCommand> attaker:
+                    attaker.ExecuteCommand(new HoldPositionCommand()); // TODO: возможо будет необходимо внедрение зависимоти.
+                    break;
                 default:
                     throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(onButtonClick)}: Unknown type of commands executor: {commandExecutor.GetType().FullName}!");
             }
