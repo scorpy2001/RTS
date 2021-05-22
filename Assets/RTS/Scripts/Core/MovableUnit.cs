@@ -1,21 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using RTS.Abstractions;
 using UnityEngine;
 
 namespace RTS.Core
 {
-    public class MovableUnit : MonoBehaviour
+    public class MovableUnit : CommandExecutorBase<IMoveCommand>
     {
-        // Start is called before the first frame update
-        void Start()
+        protected override void ExecuteSpecificCommand(IMoveCommand command)
         {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            Debug.Log("Moves");
         }
     }
 }

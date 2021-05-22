@@ -51,6 +51,9 @@ namespace RTS.UserControlSystem.UiPresenter
                 case CommandExecutorBase<IAttackCommand> attaker:
                     attaker.ExecuteCommand(new AttackCommand()); // TODO: возможо будет необходимо внедрение зависимоти.
                     break;
+                case CommandExecutorBase<IMoveCommand> attaker:
+                    attaker.ExecuteCommand(new MoveUnitCommand()); // TODO: возможо будет необходимо внедрение зависимоти.
+                    break;
                 default:
                     throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(onButtonClick)}: Unknown type of commands executor: {commandExecutor.GetType().FullName}!");
             }
