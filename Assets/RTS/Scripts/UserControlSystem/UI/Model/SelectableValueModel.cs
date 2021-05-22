@@ -12,7 +12,7 @@ namespace RTS.UserControlSystem.Model
 
         public void SetValue(ISelectable value)
         {
-            if(value == null && CurrentValue != null){
+            if((value == null || CurrentValue != value) && CurrentValue != null){
                 CurrentValue.Deselect();
             }
             CurrentValue = value;
