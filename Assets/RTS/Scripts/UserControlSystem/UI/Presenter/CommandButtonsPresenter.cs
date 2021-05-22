@@ -48,6 +48,9 @@ namespace RTS.UserControlSystem.UiPresenter
                 case CommandExecutorBase<IProduceUnitCommand> unitProducer:
                     unitProducer.ExecuteCommand(_context.Inject(new ProduceUnitCommand()));
                     break;
+                case CommandExecutorBase<IAttackCommand> attaker:
+                    attaker.ExecuteCommand(new AttackCommand()); // TODO: возможо будет необходимо внедрение зависимоти.
+                    break;
                 default:
                     throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(onButtonClick)}: Unknown type of commands executor: {commandExecutor.GetType().FullName}!");
             }
