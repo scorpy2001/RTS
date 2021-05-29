@@ -95,6 +95,7 @@ MonoBehaviour:
   _maxHealth: 1000
   _icon: {fileID: 21300000, guid: 847e84b93bbea7c4cab937eccfd6a97a, type: 3}
   _outline: {fileID: -797944605732308445}
+  _transform: {fileID: 5510538291320697774}
 --- !u!114 &-7696761192436384445
 MonoBehaviour:
   m_ObjectHideFlags: 0

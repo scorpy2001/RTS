@@ -7,7 +7,7 @@ namespace RTS.Core
     {
         protected override void ExecuteSpecificCommand(IPatrolCommand command)
         {
-            Debug.Log("Patrolls");
+            Debug.Log($"{name} patrols from {command.From} to {command.To}.");
         }
     }
 }

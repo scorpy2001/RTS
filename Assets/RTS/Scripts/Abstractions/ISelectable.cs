@@ -7,6 +7,7 @@ namespace RTS.Abstractions
         float Health { get; }
         float MaxHealth { get; }
         Sprite Icon { get; }
+        Transform Transform { get; }
 
         void Select();
         void Deselect();

@@ -1033,6 +1033,7 @@ MonoBehaviour:
   _legacyContext: {fileID: 11400000, guid: 14cf6960d9090b84b975de9ef26e57b2, type: 2}
   _goundClicksRMB: {fileID: 11400000, guid: b704e65d018902b45a9e60c4af350dfc, type: 2}
   _attackTargetClicksRMB: {fileID: 11400000, guid: b1fb25aa9d0686b4ebf116f36dfc12c2, type: 2}
+  _selectedObject: {fileID: 11400000, guid: de8fe5d3673bcea48b83d5ae30f150d1, type: 2}
 --- !u!4 &104770069
 Transform:
   m_ObjectHideFlags: 0
@@ -1079,7 +1080,7 @@ MonoBehaviour:
   _camera: {fileID: 963194227}
   _selectedObject: {fileID: 11400000, guid: de8fe5d3673bcea48b83d5ae30f150d1, type: 2}
   _eventSystem: {fileID: 632119967}
-  _attackTargetClicksRMB: {fileID: 0}
+  _attackTargetClicksRMB: {fileID: 11400000, guid: b1fb25aa9d0686b4ebf116f36dfc12c2, type: 2}
   _groundClicksRMB: {fileID: 11400000, guid: b704e65d018902b45a9e60c4af350dfc, type: 2}
   _groundTransform: {fileID: 2090784486}
 --- !u!4 &135457705
