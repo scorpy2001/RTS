@@ -17,10 +17,10 @@ namespace RTS.UserControlSystem
         
         private void Start()
         {
-            _selectedValue.OnSelected += SelectedValue_OnSelected;
-            SelectedValue_OnSelected(_selectedValue.CurrentValue);
+            _selectedValue.OnChange += SelectedValue_OnChange;
+            SelectedValue_OnChange(_selectedValue.CurrentValue);
         }
-        private void SelectedValue_OnSelected(ISelectable selected)
+        private void SelectedValue_OnChange(ISelectable selected)
         {
             _selectedImage.enabled = selected != null;
             _healthSlider.gameObject.SetActive(selected != null);

@@ -14,10 +14,10 @@ namespace RTS.UserControlSystem.UiModel
         [Inject]
         private void Init(Vector3Value groundClicks)
         {
-            groundClicks.OnNewValue += OnNewValue;
+            groundClicks.OnChange += OnChangeValue;
         }
 
-        private void OnNewValue(Vector3 groundClick)
+        private void OnChangeValue(Vector3 groundClick)
         {
             _creationCallback?.Invoke(_context.Inject(new MoveUnitCommand(groundClick)));
             _creationCallback = null;

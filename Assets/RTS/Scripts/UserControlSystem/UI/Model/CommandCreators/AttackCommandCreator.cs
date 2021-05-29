@@ -13,10 +13,10 @@ namespace RTS.UserControlSystem.UiModel
         [Inject]
         private void Init(AttackTargetValue attackTargetClicks)
         {
-            attackTargetClicks.OnNewValue += OnNewValue;
+            attackTargetClicks.OnChange+= OnChangeValue;
         }
 
-        private void OnNewValue(IAttackable attackTargetClicks)
+        private void OnChangeValue(IAttackable attackTargetClicks)
         {
             _creationCallback?.Invoke(_context.Inject(new AttackCommand(attackTargetClicks)));
             _creationCallback = null;
