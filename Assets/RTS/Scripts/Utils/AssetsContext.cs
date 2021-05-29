@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -11,17 +12,7 @@ namespace RTS.Utils
         
         public Object GetObjectOfType(Type targetType, string targetName = null)
         {
-            for (int i = 0; i < _objects.Length; i++)
-            {
-                var obj = _objects[i]; if (obj.GetType().IsAssignableFrom(targetType))
-                {
-                    if (targetName == null || obj.name == targetName)
-                    {
-                        return obj;
-                    }
-                }
-            }
-            return null;
+            return _objects.FirstOrDefault(_ => _.GetType().IsAssignableFrom(targetType) && (targetName == null || _.name == targetName));
         }
     }
 }
