@@ -13,6 +13,7 @@ namespace RTS.UserControlSystem.UiPresenter
         [SerializeField] private SelectableValueModel _selectedObject;
         [SerializeField] private EventSystem _eventSystem;
 
+        [SerializeField] private AttackTargetValue _attackTargetClicksRMB;
         [SerializeField] private Vector3Value _groundClicksRMB;
         [SerializeField] private Transform _groundTransform;
         private Plane _groundPlane;
@@ -33,9 +34,9 @@ namespace RTS.UserControlSystem.UiPresenter
                 return;
             }
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
+            var hits = Physics.RaycastAll(ray);
             if (Input.GetMouseButtonUp(0))
             {
-                var hits = Physics.RaycastAll(ray);
                 if (hits.Length == 0)
                 {
                     return;
@@ -45,7 +46,12 @@ namespace RTS.UserControlSystem.UiPresenter
             }
             else
             {
-                if (_groundPlane.Raycast(ray, out var enter))
+                var attackable = hits.Select(_ => _.collider.GetComponentInParent<IAttackable>()).FirstOrDefault(_ => _ != null);
+                if (attackable != null)
+                {
+                    _attackTargetClicksRMB.SetValue(attackable);
+                }
+                else if (_groundPlane.Raycast(ray, out var enter))
                 {
                     _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
                 }

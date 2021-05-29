@@ -9,11 +9,13 @@ namespace RTS.UserControlSystem.UiModel
     {
         [SerializeField] private AssetsContext _legacyContext;
         [SerializeField] private Vector3Value _goundClicksRMB;
+        [SerializeField] private AttackTargetValue _attackTargetClicksRMB;
         
         public override void InstallBindings()
         {
             Container.Bind<AssetsContext>().FromInstance(_legacyContext);
             Container.Bind<Vector3Value>().FromInstance(_goundClicksRMB);
+            Container.Bind<AttackTargetValue>().FromInstance(_attackTargetClicksRMB);
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>().To<ProduceUnitCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IAttackCommand>>().To<AttackCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IMoveCommand>>().To<MoveCommandCreator>().AsTransient();

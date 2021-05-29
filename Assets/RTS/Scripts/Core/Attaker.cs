@@ -7,7 +7,7 @@ namespace RTS.Core
     {
         protected override void ExecuteSpecificCommand(IAttackCommand command)
         {
-            Debug.Log("Attacks");
+            Debug.Log($"{name} attacks {command.Target}");
         }
     }
 }
