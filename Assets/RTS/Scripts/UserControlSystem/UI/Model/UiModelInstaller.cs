@@ -1,7 +1,4 @@
 using RTS.Abstractions;
-using RTS.UserControlSystem.Model;
-using RTS.Utils;
-using UnityEngine;
 using Zenject;
 
 namespace RTS.UserControlSystem.UiModel

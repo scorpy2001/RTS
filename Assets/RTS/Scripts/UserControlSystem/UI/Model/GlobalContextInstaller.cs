@@ -1,3 +1,4 @@
+using RTS.Abstractions;
 using RTS.UserControlSystem.Model;
 using RTS.UserControlSystem.UiModel;
 using RTS.Utils;
@@ -15,5 +16,6 @@ public class GlobalContextInstaller : ScriptableObjectInstaller<GlobalContextIns
     public override void InstallBindings()
     {
         Container.BindInstances(_legacyContext, _groundClicksRMB, _attackTargetClicksRMB, _selectedObject);
+        Container.Bind<IAwaitable<IAttackable>>().FromInstance(_attackTargetClicksRMB);
     }
 }
