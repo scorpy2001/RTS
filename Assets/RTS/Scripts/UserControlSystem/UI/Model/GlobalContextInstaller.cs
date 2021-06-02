@@ -17,5 +17,6 @@ public class GlobalContextInstaller : ScriptableObjectInstaller<GlobalContextIns
     {
         Container.BindInstances(_legacyContext, _groundClicksRMB, _attackTargetClicksRMB, _selectedObject);
         Container.Bind<IAwaitable<IAttackable>>().FromInstance(_attackTargetClicksRMB);
+        Container.Bind<IAwaitable<Vector3>>().FromInstance(_groundClicksRMB);
     }
 }
