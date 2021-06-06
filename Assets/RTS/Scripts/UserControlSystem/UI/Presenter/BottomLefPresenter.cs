@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using RTS.Abstractions;
 using TMPro;
-using RTS.UserControlSystem.Model;
+using RTS.UserControlSystem.Model.ScriptableObjects;
 
 namespace RTS.UserControlSystem
 {

@@ -1,5 +1,5 @@
 using RTS.Abstractions;
-using RTS.UserControlSystem.Model;
+using RTS.UserControlSystem.Model.ScriptableObjects;
 using UnityEngine;
 using Zenject;
 
