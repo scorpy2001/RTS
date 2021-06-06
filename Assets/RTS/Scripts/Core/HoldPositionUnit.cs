@@ -1,13 +1,15 @@
+using System.Threading;
 using RTS.Abstractions;
-using UnityEngine;
 
 namespace RTS.Core
 {
     public class HoldPositionUnit : CommandExecutorBase<IStopCommand>
     {
+        public CancellationTokenSource CancellationTokenSource { get; set; }
+
         protected override void ExecuteSpecificCommand(IStopCommand command)
         {
-            Debug.Log("Holds Position");
+            CancellationTokenSource?.Cancel();
         }
     }
 }

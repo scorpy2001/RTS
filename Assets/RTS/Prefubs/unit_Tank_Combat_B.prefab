@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -6217448316368418620}
   - component: {fileID: 3947970483300786031}
   - component: {fileID: 7780446484405837703}
+  - component: {fileID: 5377366632553265697}
   m_Layer: 0
   m_Name: unit_Tank_Combat_B
   m_TagString: Untagged
@@ -110,7 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbe1eaf65b21ff4589e4076739a5312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stop: {fileID: 5377366632553265697}
   _navMeshAgent: {fileID: 7780446484405837703}
+  _holdPositionUnit: {fileID: -6217448316368418620}
 --- !u!114 &6970313517862719745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +172,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5377366632553265697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103062165123301535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdc799208d64d440bd0db91b53b4b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 7780446484405837703}
 --- !u!1001 &8907797153763444121
 PrefabInstance:
   m_ObjectHideFlags: 0
