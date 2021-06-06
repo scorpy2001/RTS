@@ -6,7 +6,7 @@ using RTS.UserControlSystem.Model.ScriptableObjects;
 
 namespace RTS.UserControlSystem
 {
-    public class BottomLefPresenter : MonoBehaviour
+    public class BottomLeftPresenter : MonoBehaviour
     {
         [SerializeField] private Image _selectedImage;
         [SerializeField] private Slider _healthSlider;

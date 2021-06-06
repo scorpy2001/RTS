@@ -2,7 +2,8 @@
     "name": "UIView",
     "rootNamespace": "RTS.UserControlSystem.UiView",
     "references": [
-        "GUID:35f52c97245c6f54c917dee1fa787801"
+        "GUID:35f52c97245c6f54c917dee1fa787801",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
