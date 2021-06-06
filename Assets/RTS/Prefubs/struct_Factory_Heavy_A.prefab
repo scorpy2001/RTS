@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6334564523022883819}
   - component: {fileID: 6334564523022883817}
   - component: {fileID: -797944605732308445}
+  - component: {fileID: 1544161416218017068}
   m_Layer: 0
   m_Name: struct_Factory_Heavy_A
   m_TagString: Untagged
@@ -59,10 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0c1a3709e560d499eb2411d643a81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitPrefab: {fileID: 1103062165123301535, guid: e9ed7f6007eb0bf4d82ecc408bb1dd5f, type: 3}
-  _unitsParent: {fileID: 0}
-  _maxHealth: 1000
-  _icon: {fileID: 21300000, guid: 847e84b93bbea7c4cab937eccfd6a97a, type: 3}
+  _unitsParent: {fileID: 5510538291320697774}
 --- !u!114 &-797944605732308445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,11 +74,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
+  outlineColor: {r: 1, g: 0.89133024, b: 0, a: 1}
+  outlineWidth: 7
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &1544161416218017068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499861171672912886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b47907a9e3a014494418ebd6af66b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 1000
+  _icon: {fileID: 21300000, guid: 847e84b93bbea7c4cab937eccfd6a97a, type: 3}
+  _outline: {fileID: -797944605732308445}
 --- !u!1001 &6334564523762660677
 PrefabInstance:
   m_ObjectHideFlags: 0

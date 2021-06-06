@@ -2,7 +2,7 @@ using System;
 using RTS.Abstractions;
 using UnityEngine;
 
-namespace RTS.UserControlSystem
+namespace RTS.UserControlSystem.Model
 {
     [CreateAssetMenu(fileName = nameof(SelectableValueModel), menuName = "Strategy Game/" + nameof(SelectableValueModel), order = 0)]
     public class SelectableValueModel : ScriptableObject
@@ -12,7 +12,7 @@ namespace RTS.UserControlSystem
 
         public void SetValue(ISelectable value)
         {
-            if(value == null && CurrentValue != null){
+            if((value == null || CurrentValue != value) && CurrentValue != null){
                 CurrentValue.Deselect();
             }
             CurrentValue = value;
