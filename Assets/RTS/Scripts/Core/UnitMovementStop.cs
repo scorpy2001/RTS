@@ -17,11 +17,11 @@ namespace RTS.Core
             public StopAwaiter(UnitMovementStop unitMovementStop)
             {
                 _unitMovementStop = unitMovementStop;
-                _unitMovementStop.OnStop += onStop;
+                _unitMovementStop.OnStop += OnStop;
             }
-            private void onStop()
+            private void OnStop()
             {
-                _unitMovementStop.OnStop -= onStop;
+                _unitMovementStop.OnStop -= OnStop;
                 OnChanged(new AsyncExtensions.Void());
             }
         }

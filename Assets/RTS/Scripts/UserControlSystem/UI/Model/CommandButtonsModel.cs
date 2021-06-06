@@ -22,7 +22,7 @@ namespace RTS.UserControlSystem.UiModel
         {
             if (_commandIsPending)
             {
-                processOnCancel();
+                ProcessOnCancel();
             }
 
             _commandIsPending = true;
@@ -44,10 +44,10 @@ namespace RTS.UserControlSystem.UiModel
         public void OnSelectionChanged()
         {
             _commandIsPending = false;
-            processOnCancel();
+            ProcessOnCancel();
         }
 
-        private void processOnCancel()
+        private void ProcessOnCancel()
         {
             _unitProducer.ProcessCancel();
             _attacker.ProcessCancel();
