@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RTS.Abstractions;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,7 +52,7 @@ namespace RTS.UserControlSystem.UiView
                 var buttonGameObject = _buttonsByExecutorType.First(type => type.Key.IsAssignableFrom(currentExecutor.GetType())).Value;
                 buttonGameObject.SetActive(true);
                 var button = buttonGameObject.GetComponent<Button>();
-                button.onClick.AddListener(() => OnClick?.Invoke(currentExecutor));
+                button.OnClickAsObservable().Subscribe(_ => OnClick?.Invoke(currentExecutor));
             }
         }
 

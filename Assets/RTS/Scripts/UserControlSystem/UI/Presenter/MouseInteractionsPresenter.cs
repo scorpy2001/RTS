@@ -1,7 +1,7 @@
 using System.Linq;
 using RTS.Abstractions;
-using RTS.UserControlSystem.Model;
-using RTS.UserControlSystem.UiModel;
+using RTS.UserControlSystem.Model.ScriptableObjects;
+using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -21,41 +21,42 @@ namespace RTS.UserControlSystem.UiPresenter
         private void Start()
         {
             _groundPlane = new Plane(_groundTransform.up, 0);
+
+            var leftClickStream = Observable.EveryUpdate().Where(_ => Input.GetMouseButtonDown(0) && !_eventSystem.IsPointerOverGameObject());
+            leftClickStream.Subscribe(LeftMouseButtonClick);
+            var rightClickStream = Observable.EveryUpdate().Where(_ => Input.GetMouseButtonDown(1) && !_eventSystem.IsPointerOverGameObject());
+            rightClickStream.Subscribe(RightMouseButtonClick);
         }
 
-        private void Update()
+        private void LeftMouseButtonClick(long _)
         {
-            if (_eventSystem.IsPointerOverGameObject())
-            {
-                return;
-            }
-            if (!Input.GetMouseButtonUp(0) && !Input.GetMouseButton(1))
-            {
-                return;
-            }
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
             var hits = Physics.RaycastAll(ray);
-            if (Input.GetMouseButtonUp(0))
+
+            if (hits.Length == 0)
             {
-                if (hits.Length == 0)
-                {
-                    return;
-                }
-                var selectable = hits.Select(hit => hit.collider.GetComponentInParent<ISelectable>()).FirstOrDefault(c => c != null);
-                _selectedObject.SetValue(selectable);
+                return;
             }
-            else
+            var selectable = hits.Select(hit => hit.collider.GetComponentInParent<ISelectable>()).FirstOrDefault(c => c != null);
+            _selectedObject.SetValue(selectable);
+
+        }
+
+        private void RightMouseButtonClick(long _)
+        {
+            var ray = _camera.ScreenPointToRay(Input.mousePosition);
+            var hits = Physics.RaycastAll(ray);
+
+            var attackable = hits.Select(hit => hit.collider.GetComponentInParent<IAttackable>()).FirstOrDefault(attackable => attackable != null);
+            if (attackable != null)
             {
-                var attackable = hits.Select(_ => _.collider.GetComponentInParent<IAttackable>()).FirstOrDefault(_ => _ != null);
-                if (attackable != null)
-                {
-                    _attackTargetClicksRMB.SetValue(attackable);
-                }
-                else if (_groundPlane.Raycast(ray, out var enter))
-                {
-                    _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
-                }
+                _attackTargetClicksRMB.SetValue(attackable);
             }
+            else if (_groundPlane.Raycast(ray, out var enter))
+            {
+                _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
+            }
+
         }
     }
 }

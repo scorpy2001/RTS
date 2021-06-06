@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using RTS.Abstractions;
-using RTS.UserControlSystem.Model;
+using RTS.UserControlSystem.Model.ScriptableObjects;
 using RTS.UserControlSystem.UiModel;
 using RTS.UserControlSystem.UiView;
 using UnityEngine;
@@ -18,15 +18,15 @@ namespace RTS.UserControlSystem.UiPresenter
 
         private void Start()
         {
-            _selectable.OnChange += Selectable_OnChangeonSelected;
-            Selectable_OnChangeonSelected(_selectable.CurrentValue);
+            _selectable.OnChange += OnChange;
+            OnChange(_selectable.CurrentValue);
             _view.OnClick += _model.OnCommandButtonClicked;
             _model.OnCommandSent += _view.UnblockAllInteractions;
             _model.OnCommandCancel += _view.UnblockAllInteractions;
             _model.OnCommandAccepted += _view.BlockInteractions;
         }
 
-        private void Selectable_OnChangeonSelected(ISelectable selectable)
+        private void OnChange(ISelectable selectable)
         {
             if (_currentSelectable == selectable)
             {

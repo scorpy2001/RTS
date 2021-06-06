@@ -1,7 +1,9 @@
 {
     "name": "Abstractions",
     "rootNamespace": "RTS.Abstractions",
-    "references": [],
+    "references": [
+        "GUID:f8e2d75799a069e48819d0819040396d"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
