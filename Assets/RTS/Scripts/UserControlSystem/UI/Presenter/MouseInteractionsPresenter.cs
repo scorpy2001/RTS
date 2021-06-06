@@ -1,7 +1,6 @@
 using System.Linq;
 using RTS.Abstractions;
-using RTS.UserControlSystem.Model;
-using RTS.UserControlSystem.UiModel;
+using RTS.UserControlSystem.Model.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

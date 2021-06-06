@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RTS.Core
 {
-    public class SeletableUnit : MonoBehaviour, ISelectable
+    public class SelectableUnit : MonoBehaviour, ISelectable
     {
         [SerializeField] private float _maxHealth = 1000f;
         [SerializeField] private Sprite _icon;
