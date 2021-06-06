@@ -1,10 +1,10 @@
-using System;
 using System.Collections.Generic;
 using RTS.Abstractions;
 using RTS.UserControlSystem.Model;
+using RTS.UserControlSystem.UiModel;
 using RTS.UserControlSystem.UiView;
-using RTS.Utils;
 using UnityEngine;
+using Zenject;
 
 namespace RTS.UserControlSystem.UiPresenter
 {
@@ -12,22 +12,28 @@ namespace RTS.UserControlSystem.UiPresenter
     {
         [SerializeField] private SelectableValueModel _selectable;
         [SerializeField] private CommandButtonsView _view;
-        [SerializeField] private AssetsContext _context;
-        
+        [Inject] private CommandButtonsModel _model;
+
         private ISelectable _currentSelectable;
 
         private void Start()
         {
-            _selectable.OnSelected += onSelected;
-            onSelected(_selectable.CurrentValue);
-            _view.OnClick += onButtonClick;
+            _selectable.OnChange += Selectable_OnChangeonSelected;
+            Selectable_OnChangeonSelected(_selectable.CurrentValue);
+            _view.OnClick += _model.OnCommandButtonClicked;
+            _model.OnCommandSent += _view.UnblockAllInteractions;
+            _model.OnCommandCancel += _view.UnblockAllInteractions;
+            _model.OnCommandAccepted += _view.BlockInteractions;
         }
 
-        private void onSelected(ISelectable selectable)
+        private void Selectable_OnChangeonSelected(ISelectable selectable)
         {
             if (_currentSelectable == selectable)
             {
                 return;
+            }
+            if(_currentSelectable != null){
+                _model.OnSelectionChanged();
             }
 
             _currentSelectable = selectable;
@@ -38,30 +44,6 @@ namespace RTS.UserControlSystem.UiPresenter
                 var commandExecutors = new List<ICommandExecutor>();
                 commandExecutors.AddRange((selectable as Component).GetComponentsInParent<ICommandExecutor>());
                 _view.MakeLayout(commandExecutors);
-            }
-        }
-
-        private void onButtonClick(ICommandExecutor commandExecutor)
-        {
-            switch (commandExecutor)
-            {
-                case CommandExecutorBase<IProduceUnitCommand> unitProducer:
-                    unitProducer.ExecuteCommand(_context.Inject(new ProduceUnitCommandHeir()));
-                    break;
-                case CommandExecutorBase<IAttackCommand> attaker:
-                    attaker.ExecuteCommand(new AttackCommand()); // TODO: возможо будет необходимо внедрение зависимоти.
-                    break;
-                case CommandExecutorBase<IMoveCommand> attaker:
-                    attaker.ExecuteCommand(new MoveUnitCommand()); // TODO: возможо будет необходимо внедрение зависимоти.
-                    break;
-                case CommandExecutorBase<IPatrolCommand> attaker:
-                    attaker.ExecuteCommand(new PatrolCommand()); // TODO: возможо будет необходимо внедрение зависимоти.
-                    break;
-                case CommandExecutorBase<IStopCommand> attaker:
-                    attaker.ExecuteCommand(new HoldPositionCommand()); // TODO: возможо будет необходимо внедрение зависимоти.
-                    break;
-                default:
-                    throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(onButtonClick)}: Unknown type of commands executor: {commandExecutor.GetType().FullName}!");
             }
         }
     }

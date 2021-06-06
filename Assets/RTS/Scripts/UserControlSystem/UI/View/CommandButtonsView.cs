@@ -27,6 +27,23 @@ namespace RTS.UserControlSystem.UiView
             _buttonsByExecutorType.Add(typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton);
         }
 
+        public void BlockInteractions(ICommandExecutor commandExecutor)
+        {
+            UnblockAllInteractions();
+            GetButtonGameObjectByType(commandExecutor.GetType()).GetComponent<Selectable>().interactable = false;
+        }
+
+        public void UnblockAllInteractions() => SetInteractible(true);
+
+        private void SetInteractible(bool value)
+        {
+            _attackButton.GetComponent<Selectable>().interactable = value;
+            _moveButton.GetComponent<Selectable>().interactable = value;
+            _patrolButton.GetComponent<Selectable>().interactable = value;
+            _stopButton.GetComponent<Selectable>().interactable = value;
+            _produceUnitButton.GetComponent<Selectable>().interactable = value;
+        }
+
         public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors)
         {
             foreach (var currentExecutor in commandExecutors)
@@ -36,6 +53,11 @@ namespace RTS.UserControlSystem.UiView
                 var button = buttonGameObject.GetComponent<Button>();
                 button.onClick.AddListener(() => OnClick?.Invoke(currentExecutor));
             }
+        }
+
+        private GameObject GetButtonGameObjectByType(Type executorInstanceType)
+        {
+            return _buttonsByExecutorType.First(type => type.Key.IsAssignableFrom(executorInstanceType)).Value;
         }
 
         public void Clear()

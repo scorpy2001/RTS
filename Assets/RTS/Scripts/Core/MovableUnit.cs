@@ -7,7 +7,7 @@ namespace RTS.Core
     {
         protected override void ExecuteSpecificCommand(IMoveCommand command)
         {
-            Debug.Log("Moves");
+            Debug.Log($"{name} is moving to {command.Target}!");
         }
     }
 }

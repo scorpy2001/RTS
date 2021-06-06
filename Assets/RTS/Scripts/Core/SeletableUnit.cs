@@ -16,6 +16,8 @@ namespace RTS.Core
 
         public Sprite Icon => _icon;
 
+        public Transform Transform => gameObject.transform;
+
         private void Awake()
         {
             _health = _maxHealth;
